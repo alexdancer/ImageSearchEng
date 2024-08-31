@@ -1,0 +1,16 @@
+{
+  "name": "imagesearcheng",
+  "version": "1.0.0",
+  "description": "Create a Image Searcher using neural networks and vector databases",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "weaviate-ts-client": "^2.2.0"
+  }
+}
