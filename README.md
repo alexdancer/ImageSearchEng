@@ -39,5 +39,6 @@
     ...
     ```
     </details>
+  - Run the containers with _"docker-compose up -d"_ turn off with _"docker-compose down"_
 * **Add your own images to the img folder and find an image for test.jpg**
 + **Run the image searcher by typing _"node index.js"_**
