@@ -11,7 +11,7 @@ services:
     image: cr.weaviate.io/semitechnologies/weaviate:1.26.3
     ports:
     - 8080:8080
-    - 50052:50051  # Changed host port from 50051 to 50052
+    - 50052:50051
     volumes:
     - weaviate_data:/var/lib/weaviate
     restart: on-failure:0
