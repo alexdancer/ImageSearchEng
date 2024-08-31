@@ -12,6 +12,8 @@ const classExists = schemaRes.classes.some(cls => cls.class === 'Meme');
 
 console.log(schemaRes)
 
+// Creates the schema of meme
+// Vectorizer database: img2vec-neural
 if (!classExists) {
   const schemaConfig = {
     class: "Meme",
@@ -36,15 +38,16 @@ if (!classExists) {
 
   await client.schema.classCreator().withClass(schemaConfig).do();
   console.log("Created class Meme");
-} else {
-  
-}
+} else {console.log("Class Meme already exists")}
 
+// Function to convert image to base64
 const toBase64 = (filePath) => {
   const img = readFileSync(filePath);
   return Buffer.from(img).toString('base64');
 };
 
+
+// Reads all images from the img folder
 const imgFiles = readdirSync("./img");
 
 const promises = imgFiles.map(async (imgFile) => {
@@ -61,6 +64,7 @@ const promises = imgFiles.map(async (imgFile) => {
 
 await Promise.all(promises);
 
+// Query to get the image most similar to the test image
 const test = Buffer.from(readFileSync("./test.jpg")).toString("base64");
 
 const resImage = await client.graphql
@@ -71,6 +75,6 @@ const resImage = await client.graphql
   .withLimit(1)
   .do();
 
-// Write result to filesystem
+// Writes the result image to the result.jpg file
 const result = resImage.data.Get.Meme[0].image;
 writeFileSync("./result.jpg", result, "base64");
